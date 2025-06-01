@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
-  <link rel="stylesheet" href="./styles/register.css">
+  <link rel="stylesheet" href="../styles/register.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script type="module">
-    import { supabase } from './scripts/supabase.js';
+    import { supabase } from '../scripts/supabase.js';
 
     const registerForm = document.querySelector('.register-form');
     registerForm.addEventListener('submit', async (event) => {
@@ -21,7 +21,7 @@
         alert('Registration failed: ' + error.message);
       } else {
         alert('Registration successful!');
-        window.location.href = './pages/login.html'; // Redirect to the login page
+        window.location.href = '../pages/login.html'; // Redirect to the login page
       }
     });
   </script>
@@ -49,7 +49,7 @@
       </div>
       <button class="button button--primary button--lg register-button" type="submit">Register</button>
     </form>
-    <p class="register-footer">Already have an account? <a class="register-link" href="./pages/login.html">Log in
+    <p class="register-footer">Already have an account? <a class="register-link" href="../pages/login.html">Log in
         here</a></p>
   </div>
 </body>
