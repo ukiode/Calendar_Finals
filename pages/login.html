@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="/styles/login.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script type="module">
+    import { supabase } from '/scripts/supabase.js';
+
+    const loginForm = document.querySelector('.login-form');
+    loginForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const email = document.querySelector('#username').value;
+      const password = document.querySelector('#password').value;
+
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        alert('Login failed: ' + error.message);
+      } else {
+        alert('Login successful!');
+        window.location.href = '/index.html'; // Redirect to the main page
+      }
+    });
+  </script>
+</head>
+
+<body class="login-page">
+  <div class="login-container">
+    <h1 class="login-title">Login Page</h1>
+    <form class="login-form">
+      <div class="form-group">
+        <label class="form-label" for="username">Username:</label>
+        <input class="form-input" type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="password">Password:</label>
+        <input class="form-input" type="password" id="password" name="password" required>
+      </div>
+      <button class="button button--primary button--lg login-button" type="submit">Login</button>
+    </form>
+    <p class="login-footer">Don't have an account? <a class="login-link" href="/pages/register.html">Register
+        here</a>
+    </p>
+  </div>
+</body>
+
+</html>
